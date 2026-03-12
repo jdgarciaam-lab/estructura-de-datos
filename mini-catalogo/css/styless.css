@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+/* Catálogo: horizontal con wrap */
+.catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Tarjetas de producto en Shadow DOM */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    padding: 25px;
+    width: 300px;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin: 0 0 12px;
+    font-size: 1.5em;
+    color: #264653;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.card .precio {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #2a9d8f;
+}
+
+/* Header y Footer */
+header, footer {
+    background-color: #264653;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1, footer p {
+    margin: 0;
+}

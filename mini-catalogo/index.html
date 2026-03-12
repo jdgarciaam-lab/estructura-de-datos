@@ -1,0 +1,59 @@
+class ProductCard extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        const nombre = this.getAttribute('nombre') || 'Sin nombre';
+        const precio = Number(this.getAttribute('precio')) || 0;
+        const descripcion = this.getAttribute('descripcion') || '';
+
+        const formatter = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP'
+        });
+        const precioFormateado = formatter.format(precio);
+
+        this.shadowRoot.innerHTML = `
+        <style>
+            .card {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+                padding: 25px;
+                width: 300px;
+                margin: 10px;
+                transition: transform 0.25s, box-shadow 0.25s;
+                text-align: left;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
+            .card h2 {
+                margin: 0 0 12px;
+                font-size: 1.5em;
+                color: #264653;
+            }
+            .card p {
+                margin: 8px 0;
+                font-size: 1em;
+                line-height: 1.4;
+            }
+            .precio {
+                font-weight: bold;
+                font-size: 1.2em;
+                color: #2a9d8f;
+            }
+        </style>
+        <div class="card">
+            <h2>${nombre}</h2>
+            <p>${descripcion}</p>
+            <p class="precio">${precioFormateado}</p>
+        </div>
+        `;
+    }
+}
+
+customElements.define('product-card', ProductCard);
